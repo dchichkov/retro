@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/git-commands/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/libretro/dosbox-libretro.git
+	branch = 410746e07668314b880098b4dc8808a7855d02f3
+	commit = 410746e07668314b880098b4dc8808a7855d02f3
+	parent = 448e54fe7b63c8e9a2ec2d7163bb6b9a061766ad
+	method = merge
+	cmdver = 0.4.0
