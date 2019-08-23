@@ -96,6 +96,7 @@ bool Emulator::loadRom(const string& romPath) {
 		lib += "so";
 #endif
 		if (!loadCore(corePath() + "/" + lib)) {
+			std::cerr << "Failed to loadCore: " << (corePath() + "/" + lib) << std::endl;
 			return false;
 		}
 		m_core = core;
@@ -104,11 +105,13 @@ bool Emulator::loadRom(const string& romPath) {
 	retro_game_info gameInfo;
 	ifstream in(romPath, ios::binary | ios::ate);
 	if (in.fail()) {
+		std::cerr << "Failed to load rom: " << romPath << std::endl;
 		return false;
 	}
 	ostringstream out;
 	gameInfo.size = in.tellg();
 	if (in.fail()) {
+		std::cerr << "Failed to get rom size: " << romPath << " size:" << gameInfo.size << std::endl;
 		return false;
 	}
 	char* romData = new char[gameInfo.size];
@@ -118,6 +121,7 @@ bool Emulator::loadRom(const string& romPath) {
 	in.read(romData, gameInfo.size);
 	if (in.fail()) {
 		delete[] romData;
+		std::cerr << "Failed to read rom: " << romPath << " size:" << gameInfo.size << std::endl;
 		return false;
 	}
 	in.close();
@@ -125,6 +129,7 @@ bool Emulator::loadRom(const string& romPath) {
 	auto res = retro_load_game(&gameInfo);
 	delete[] romData;
 	if (!res) {
+		std::cerr << "Failed to load game, res:" <<  res << std::endl;
 		return false;
 	}
 	retro_get_system_av_info(&m_avInfo);

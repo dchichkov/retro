@@ -1,6 +1,6 @@
 {
     "DOS": {
-        "lib": "dos",
+        "lib": "dosbox",
         "ext": ["conf"],
         "keybinds": ["Z", "A", "TAB", "ENTER", "UP", "DOWN", "LEFT", "RIGHT", "X", "S", "Q", "W"],
         "buttons": ["B", "Y", "SELECT", "START", "UP", "DOWN", "LEFT", "RIGHT", "A", "X", "L", "R"],
